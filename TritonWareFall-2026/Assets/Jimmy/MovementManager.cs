@@ -31,12 +31,13 @@ public class MovementManager : MonoBehaviour
     void Update()
     {
         input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0f).normalized;
-
+        Debug.Log("W held: " + Input.GetKey(KeyCode.W));
         dashTimer -= Time.deltaTime;
         cooldownTimer -= Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Space) && cooldownTimer <= 0f)
         {
+            Debug.Log("should dash");
             dashTimer = dashDuration;
             cooldownTimer = dashCooldown;
         }
