@@ -4,7 +4,9 @@ using System.Collections.Generic;
 public enum DrunkState { Sober, Tipsy, Drunk, Wasted }
 
 public class DrunkManager : MonoBehaviour
-{
+    {
+
+        //drunk singleton, basically just call DrunkManager.Drunk_Manager anywhere
     public static DrunkManager Drunk_Manager { get; private set; }
     
     //how drunk player is, is incremented in a flat manner
