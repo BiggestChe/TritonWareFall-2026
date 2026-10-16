@@ -28,6 +28,8 @@ public class MovementManager : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
+    //uses base unity input system
+    //add some shader / visual effects later for oomph factor
     void Update()
     {
         input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0f).normalized;
@@ -43,6 +45,8 @@ public class MovementManager : MonoBehaviour
         }
     }
 
+
+    //drunk movement
     void FixedUpdate()
     {
         float drunk = DrunkManager.Drunk_Manager.Drunk_Amount;

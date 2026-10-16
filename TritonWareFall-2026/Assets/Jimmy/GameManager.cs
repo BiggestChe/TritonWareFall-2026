@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
        StartShift(); 
     }
 
+    
     void StartShift()
     {
         Time.timeScale = 1f;
@@ -81,7 +82,6 @@ public class GameManager : MonoBehaviour
 
     void Display_Results(bool survived)
     {   
-
         //something like resultsscreen.setactive(true)
         return;
     }
