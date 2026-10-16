@@ -44,6 +44,7 @@
   <Project Path="Unity.2D.Animation.Profiler.csproj" />
   <Project Path="Unity.InputSystem.ForUI.Editor.csproj" />
   <Project Path="Unity.CollabProxy.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
   <Project Path="Unity.2D.Welcome.csproj" />
   <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
