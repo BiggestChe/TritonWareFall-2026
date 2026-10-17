@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Potion_Red
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
   recipeName: Red Potion
-  recipeIcon: {fileID: 0}
+  recipeIcon: {fileID: -5716412995672767591, guid: e72db8222266346b2899e21003fc5b99, type: 3}
   basePatienceTime: 30
   basePoints: 100

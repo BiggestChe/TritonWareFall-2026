@@ -25,7 +25,7 @@ public class OrderManager : MonoBehaviour
 
     [Header("Order Settings")]
     public float spawnInterval = 10f; 
-    public int maxActiveOrders = 4;
+    public int maxActiveOrders = 3;
 
     private List<ActiveOrder> activeOrders = new List<ActiveOrder>();
     private float spawnTimer;
