@@ -6,6 +6,8 @@ public class AudioManager : MonoBehaviour
 
     const string VolumeKey = "MasterVolume";
     public float Volume { get; private set; } = 1f;
+
+    AudioSource musicSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +21,9 @@ public class AudioManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.loop = true;
+
         SetVolume(PlayerPrefs.GetFloat(VolumeKey, 1f));
     }
 
@@ -27,5 +32,14 @@ public class AudioManager : MonoBehaviour
         Volume = Mathf.Clamp01(value);
         AudioListener.volume = Volume;
         PlayerPrefs.SetFloat(VolumeKey, Volume);
+    }
+
+    public void PlayMusic(AudioClip clip)
+    {
+        if (musicSource.clip == clip && musicSource.isPlaying)
+            return;
+        
+        musicSource.clip = clip;
+        musicSource.Play();
     }
 }
