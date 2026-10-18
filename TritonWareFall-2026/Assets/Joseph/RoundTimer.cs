@@ -1,10 +1,11 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RoundTimer : MonoBehaviour
 {
-    public Text timerText;
+    public TextMeshProUGUI timerText;
     public Image fillImage;
     private float timeLeft;
     private float shiftLength;
@@ -18,6 +19,7 @@ public class RoundTimer : MonoBehaviour
         fillImage.fillAmount = 1f;
         shiftLength = GameManager.Instance.TimeRemaining;
         timeLeft = GameManager.Instance.TimeRemaining;
+        timerText.text = timeLeft.ToString("F0");
     }
  
     IEnumerator WaitAndReset()
@@ -32,6 +34,7 @@ public class RoundTimer : MonoBehaviour
     {
         timeLeft = GameManager.Instance.TimeRemaining;
         fillImage.fillAmount = timeLeft / shiftLength;
+        timerText.text = timeLeft.ToString("F0");
         if (!resetPending)
         {
             Debug.Log($"Time Remaining: {timeLeft}");
