@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class MenuTester : MonoBehaviour
 {
-    [SerializeField] PotionMenu menu;
+    [SerializeField] ItemSelector menu;
 
     void Start()
     {
-        menu.OnPotionChosen += p => Debug.Log("Picked: " + p.potionName);
+        menu.OnItemChosen += i => Debug.Log("Picked: " + i.itemName);
         menu.Open();   // open immediately on play
     }
 

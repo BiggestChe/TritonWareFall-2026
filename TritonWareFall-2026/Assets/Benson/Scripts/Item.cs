@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class PotionItem : MonoBehaviour
+public class Item : MonoBehaviour
 {
-    public string potionName;
-    [SerializeField] PotionMenu menu;
+    public string itemName;
+    [SerializeField] ItemSelector menu;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
