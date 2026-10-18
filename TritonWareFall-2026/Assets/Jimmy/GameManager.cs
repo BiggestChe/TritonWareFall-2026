@@ -3,6 +3,7 @@ using UnityEngine;
 
 public enum IngredientType { RedPotion, GreenPotion, BluePotion, Mandrake, LizardTail }
 public enum GameState { Menu, Playing, Paused, GameOver }
+[DefaultExecutionOrder(-1)] //Lets GameManager run before other scripts
 public class GameManager : MonoBehaviour
 { 
 
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       Instance = this;
        StartShift(); 
     }
 
