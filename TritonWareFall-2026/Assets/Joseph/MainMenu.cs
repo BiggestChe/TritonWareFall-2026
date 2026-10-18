@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[DefaultExecutionOrder(-1)]
 public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
         SceneManager.LoadScene("TestGameScene");
+        GameManager.Instance.StartShift();
     }
 
     public void QuitGame()
