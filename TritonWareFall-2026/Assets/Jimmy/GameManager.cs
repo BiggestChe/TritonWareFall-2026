@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     }
 
     
-    void StartShift()
+    public void StartShift()
     {
         Time.timeScale = 1f;
         TimeRemaining = shiftLength;
