@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum IngredientType { RedPotion, GreenPotion, BluePotion, Mandrake, LizardTail }
 public enum GameState { Menu, Playing, Paused, GameOver }
@@ -84,7 +85,11 @@ public class GameManager : MonoBehaviour
 
     void Display_Results(bool survived)
     {   
-        //something like resultsscreen.setactive(true)
+        // Joseph Tse, 2026-10-18
+        if (!survived)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
         return;
     }
 }
