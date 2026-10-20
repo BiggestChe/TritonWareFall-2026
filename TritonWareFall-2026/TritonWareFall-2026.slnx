@@ -1,5 +1,6 @@
 ﻿<Solution>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <Project Path="Assembly-CSharp.csproj" />
 =======
   <Project Path="Unity.InputSystem.csproj" />
@@ -50,8 +51,8 @@
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
 >>>>>>> main
+=======
+  <Project Path="Assembly-CSharp.csproj" />
+>>>>>>> main
   <Project Path="Unity.2D.Welcome.csproj" />
-  <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
-  <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
-  <Project Path="Unity.2D.Triangulation.Runtime.csproj" />
 </Solution>
