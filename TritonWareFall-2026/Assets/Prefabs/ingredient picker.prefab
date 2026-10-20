@@ -1039,6 +1039,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ingredient menu
       objectReference: {fileID: 0}
+    - target: {fileID: 1905383569874720632, guid: 8373c03da993ae74898653b42e728273, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4971952977201291549, guid: 8373c03da993ae74898653b42e728273, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.73084
