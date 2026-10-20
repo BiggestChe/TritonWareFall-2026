@@ -27,6 +27,7 @@ public class PlayerHand : MonoBehaviour
         Debug.Log("Holding " + type);
     }
 
+    //potion is then used with match() to determine correct ingredients or not
     public void HoldPotion(List<IngredientType> ingredients, Sprite sprite)
     {
         contents = new List<IngredientType>(ingredients);
