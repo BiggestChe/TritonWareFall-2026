@@ -451,10 +451,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e858977a19ff444cbd41b4e997b3b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  GameOverStats: {fileID: 0}
   shiftLength: 240
   maxFailedOrders: 3
   startOnPlay: 1
   timer: 0
+  PauseMenu: {fileID: 0}
 --- !u!4 &1924377129
 Transform:
   m_ObjectHideFlags: 0

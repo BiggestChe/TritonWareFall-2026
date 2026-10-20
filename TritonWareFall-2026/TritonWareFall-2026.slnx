@@ -1,8 +1,4 @@
 ﻿<Solution>
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <Project Path="Assembly-CSharp.csproj" />
-=======
   <Project Path="Unity.InputSystem.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.csproj" />
   <Project Path="Unity.2D.Aseprite.Editor.csproj" />
@@ -19,6 +15,7 @@
   <Project Path="Unity.VisualScripting.Core.csproj" />
   <Project Path="Unity.VisualScripting.State.Editor.csproj" />
   <Project Path="Unity.VisualScripting.Flow.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.2D.Tilemap.Extras.Editor.csproj" />
   <Project Path="Unity.InputSystem.ForUI.csproj" />
   <Project Path="PsdPlugin.csproj" />
@@ -48,11 +45,9 @@
   <Project Path="Unity.2D.Animation.Profiler.csproj" />
   <Project Path="Unity.InputSystem.ForUI.Editor.csproj" />
   <Project Path="Unity.CollabProxy.Editor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
->>>>>>> main
-=======
-  <Project Path="Assembly-CSharp.csproj" />
->>>>>>> main
   <Project Path="Unity.2D.Welcome.csproj" />
+  <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
+  <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
+  <Project Path="Unity.2D.Triangulation.Runtime.csproj" />
 </Solution>
