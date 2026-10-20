@@ -73,33 +73,6 @@ public class DrunkManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
-        // For testing Drunkbar, Joseph Tse, 2026-10-17
-        /*
-        if (!resetPending)
-        {
-            AddIntoxication(swigAmount);
-            Debug.Log($"Drunk Amount: {Drunk_Amount}, State: {State}");
-            StartCoroutine(WaitAndReset());
-        }
-        */
-    }
-
-    // Added by Joseph Tse, 2026-10-17, for testing purposes
-    /*
-    IEnumerator WaitAndReset()
-        {
-            resetPending = true;
-            yield return new WaitForSeconds(1f);
-            if (Drunk_Amount == 1f)
-            {
-                Debug.Log("Reached max drunk");
-                DrunkReset();
-            }
-            resetPending = false;
-        }
-    */
-=======
         // // For testing Drunkbar, Joseph Tse, 2026-10-17
         // if (!resetPending)
         // {
@@ -121,5 +94,4 @@ public class DrunkManager : MonoBehaviour
     //         }
     //         resetPending = false;
     //     }
->>>>>>> benson-branch
 }
