@@ -8,6 +8,8 @@ public enum GameState { Menu, Playing, Paused, GameOver }
 public class GameManager : MonoBehaviour
 { 
 
+    public GameOverStats GameOverStats;
+
     //Public singleton accessible anywhere
     public static GameManager Instance { get; private set; }
 

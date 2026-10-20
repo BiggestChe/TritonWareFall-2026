@@ -393,6 +393,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211953953}
   m_CullTransparentMesh: 1
+--- !u!1 &343236201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343236202}
+  - component: {fileID: 343236203}
+  m_Layer: 0
+  m_Name: GameOverStatsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &343236202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343236201}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 686.4019, y: 421.8464, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &343236203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343236201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b97390460c24427aad8badd878639d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverStats
+  TipsNumber: {fileID: 744491743}
+  OrdersServedNumber: {fileID: 2009994253}
+  OrdersFailedNumber: {fileID: 2038969801}
+  FinalScoreNumber: {fileID: 869611457}
+  TimeRemainingNumber: {fileID: 533717115}
+  LongestStreakNumber: {fileID: 1123369866}
 --- !u!1 &533717113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,7 +1772,7 @@ GameObject:
   - component: {fileID: 1866215053}
   - component: {fileID: 1866215052}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: GameOverStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2243,3 +2293,4 @@ SceneRoots:
   - {fileID: 573689107}
   - {fileID: 1866215055}
   - {fileID: 1497468820}
+  - {fileID: 343236202}
