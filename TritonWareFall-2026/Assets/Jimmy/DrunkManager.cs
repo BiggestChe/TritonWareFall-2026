@@ -26,7 +26,7 @@ public class DrunkManager : MonoBehaviour
     public DrunkState HighestState { get; private set; } = DrunkState.Sober;
 
     // Added by Joseph Tse, 2024-06-05
-    public DrunkBar DrunkBar;
+    // public DrunkBar DrunkBar;
 
     private void Awake()
     {
@@ -60,38 +60,38 @@ public class DrunkManager : MonoBehaviour
         }
 
         // Added by Joseph Tse, 2026-10-17
-        if (DrunkBar != null)
-        {
-            DrunkBar.UpdateBar(Drunk_Amount, State);
-        }
+        // if (DrunkBar != null)
+        // {
+        //     DrunkBar.UpdateBar(Drunk_Amount, State);
+        // }
 
     }
 
     // Added by Joseph Tse, 2026-10-17, for testing purposes
-    bool resetPending = false;
+    // bool resetPending = false;
 
     // Update is called once per frame
     void Update()
     {
-        // For testing Drunkbar, Joseph Tse, 2026-10-17
-        if (!resetPending)
-        {
-            AddIntoxication(swigAmount);
-            Debug.Log($"Drunk Amount: {Drunk_Amount}, State: {State}");
-            StartCoroutine(WaitAndReset());
-        }
+        // // For testing Drunkbar, Joseph Tse, 2026-10-17
+        // if (!resetPending)
+        // {
+        //     AddIntoxication(swigAmount);
+        //     Debug.Log($"Drunk Amount: {Drunk_Amount}, State: {State}");
+        //     StartCoroutine(WaitAndReset());
+        // }
     }
 
-    // Added by Joseph Tse, 2026-10-17, for testing purposes
-    IEnumerator WaitAndReset()
-        {
-            resetPending = true;
-            yield return new WaitForSeconds(1f);
-            if (Drunk_Amount == 1f)
-            {
-                Debug.Log("Reached max drunk");
-                DrunkReset();
-            }
-            resetPending = false;
-        }
+    // // Added by Joseph Tse, 2026-10-17, for testing purposes
+    // IEnumerator WaitAndReset()
+    //     {
+    //         resetPending = true;
+    //         yield return new WaitForSeconds(1f);
+    //         if (Drunk_Amount == 1f)
+    //         {
+    //             Debug.Log("Reached max drunk");
+    //             DrunkReset();
+    //         }
+    //         resetPending = false;
+    //     }
 }
