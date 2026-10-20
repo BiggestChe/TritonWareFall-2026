@@ -68,21 +68,24 @@ public class DrunkManager : MonoBehaviour
     }
 
     // Added by Joseph Tse, 2026-10-17, for testing purposes
-    bool resetPending = false;
+    // bool resetPending = false;
 
     // Update is called once per frame
     void Update()
     {
         // For testing Drunkbar, Joseph Tse, 2026-10-17
+        /*
         if (!resetPending)
         {
             AddIntoxication(swigAmount);
             Debug.Log($"Drunk Amount: {Drunk_Amount}, State: {State}");
             StartCoroutine(WaitAndReset());
         }
+        */
     }
 
     // Added by Joseph Tse, 2026-10-17, for testing purposes
+    /*
     IEnumerator WaitAndReset()
         {
             resetPending = true;
@@ -94,4 +97,5 @@ public class DrunkManager : MonoBehaviour
             }
             resetPending = false;
         }
+    */
 }

@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxFailedOrders = 3;
     [SerializeField] private bool startOnPlay = true;         // turn off once the main menu calls StartShift
     [SerializeField] public int timer; 
+    // Added by Joseph Tse, 2026-10-19
+    [SerializeField] private GameObject PauseMenu;
 
     // => denotes a lambda function
     public int FailuresRemaining => maxFailedOrders - OrdersFailed;
@@ -36,7 +38,8 @@ public class GameManager : MonoBehaviour
     //if a player somehow lasts the whole 5 minutes, display a cool message saying yay you did or something
     public bool SurvivedShift { get; private set; }
     
-
+    // Added by Joseph Tse, 2026-10-19
+    public float Drunkeness { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -60,6 +63,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
      void Update()
     {
+        // Added by Joseph Tse, 2026-10-19
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (State == GameState.Playing) PauseGame();
+            else if (State == GameState.Paused) ResumeGame();
+        }
+
         if (State != GameState.Playing) return;
 
         TimeRemaining -= Time.deltaTime;
@@ -93,5 +103,48 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
         return;
+    }
+    
+    // Added by Joseph Tse, 2026-10-19
+    public void PauseGame()
+    {
+        if (State != GameState.Playing) return;
+        State = GameState.Paused;
+        Time.timeScale = 0f;
+        PauseMenu.SetActive(true);
+    }
+
+    // Added by Joseph Tse, 2026-10-19
+    public void ResumeGame()
+    {
+        if (State != GameState.Paused) return;
+        State = GameState.Playing;
+        Time.timeScale = 1f;
+        PauseMenu.SetActive(false);
+    }
+
+    // Added by Joseph Tse, 2026-10-19
+    float drunkMultiplier(float x)
+        {
+            return 2 * x + 1;
+        }
+
+
+    // Added by Joseph Tse, 2026-10-19
+    public void CompleteOrder(int score, int tips)
+    {
+        if (State != GameState.Playing) return;
+         
+        OrdersServed++;
+        Streak++;
+        if (Streak > LongestStreak) LongestStreak = Streak;
+
+        Tips += tips;
+
+        Drunkeness = DrunkManager.Drunk_Manager.Drunk_Amount;
+
+        score = Mathf.RoundToInt(score * drunkMultiplier(Drunkeness) + tips);
+
+        Score += score;
     }
 }
