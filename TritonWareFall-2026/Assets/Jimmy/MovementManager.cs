@@ -28,14 +28,13 @@ public class MovementManager : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
-    //uses base unity input system
-    //add some shader / visual effects later for oomph factor
     void Update()
     {
         input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0f).normalized;
         dashTimer -= Time.deltaTime;
         cooldownTimer -= Time.deltaTime;
 
+        //add some oomph factor here later for a dash
         if (Input.GetKeyDown(KeyCode.Space) && cooldownTimer <= 0f)
         {
             Debug.Log("should dash");
@@ -44,11 +43,11 @@ public class MovementManager : MonoBehaviour
         }
     }
 
-
-    //drunk movement
+    //manages drunk movement on a fixed interval scale that runs continually
     void FixedUpdate()
     {
         float drunk = DrunkManager.Drunk_Manager.Drunk_Amount;
+        Debug.Log("Drunk amount: " + drunk);
 
         // Drunk wobble: rotate the input direction back and forth
         float wobble = Mathf.Sin(Time.time * 3f) * maxWobbleAngle * drunk;

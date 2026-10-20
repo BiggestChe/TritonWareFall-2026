@@ -13,7 +13,7 @@ public class DrunkManager : MonoBehaviour
     //how drunk player is, is incremented in a flat manner
     public float Drunk_Amount { get; private set; }
 
-    [SerializeField] private float swigAmount = 0.12f;        // added per completed order
+    public float swigAmount = 0.12f;        // added per completed order
     
     [Header("Drunk Thresholds (0-1)")]
     [SerializeField] private float tipsyThreshold = 0.25f;
