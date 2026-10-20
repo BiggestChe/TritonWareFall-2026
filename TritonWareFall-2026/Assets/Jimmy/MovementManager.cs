@@ -33,7 +33,6 @@ public class MovementManager : MonoBehaviour
     void Update()
     {
         input = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0f).normalized;
-        Debug.Log("W held: " + Input.GetKey(KeyCode.W));
         dashTimer -= Time.deltaTime;
         cooldownTimer -= Time.deltaTime;
 
