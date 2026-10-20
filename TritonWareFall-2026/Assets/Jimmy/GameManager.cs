@@ -67,6 +67,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Called by RecipeGenerator when the player successfully serves an order
+    public void ServeOrder(int basePoints, float timeLeftFraction)
+{
+    if (State != GameState.Playing) return;
+
+    Streak++;
+    if (Streak > LongestStreak) LongestStreak = Streak;
+    OrdersServed++;
+
+    float drunk = DrunkManager.Drunk_Manager != null ? DrunkManager.Drunk_Manager.Drunk_Amount : 0f;
+    int points = Mathf.RoundToInt(basePoints * (1f + timeLeftFraction * 0.5f));
+
+    //if the player is drunk, they get a bonus to their tips
+    int tip = Mathf.RoundToInt(points * drunk);   // drunk genius bonus
+
+    Score += points;
+    Tips += tip;
+    
+    DrunkManager.Drunk_Manager?.AddIntoxication(DrunkManager.Drunk_Manager.swigAmount); // Add intoxication when an order is served
+    }
+
     public void FailOrder()
     {
         if (State != GameState.Playing) return;
@@ -81,6 +102,8 @@ public class GameManager : MonoBehaviour
         State = GameState.GameOver;
         Display_Results(shift_complete);
     }
+
+
 
     void Display_Results(bool survived)
     {   
