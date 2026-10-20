@@ -26,7 +26,7 @@ public class DrunkManager : MonoBehaviour
     public DrunkState HighestState { get; private set; } = DrunkState.Sober;
 
     // Added by Joseph Tse, 2024-06-05
-    public DrunkBar DrunkBar;
+    // public DrunkBar DrunkBar;
 
     private void Awake()
     {
@@ -60,10 +60,10 @@ public class DrunkManager : MonoBehaviour
         }
 
         // Added by Joseph Tse, 2026-10-17
-        if (DrunkBar != null)
-        {
-            DrunkBar.UpdateBar(Drunk_Amount, State);
-        }
+        // if (DrunkBar != null)
+        // {
+        //     DrunkBar.UpdateBar(Drunk_Amount, State);
+        // }
 
     }
 
