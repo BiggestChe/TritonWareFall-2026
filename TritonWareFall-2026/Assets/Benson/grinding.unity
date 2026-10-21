@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: qte minigame
       objectReference: {fileID: 0}
+    - target: {fileID: 8322819652087899155, guid: 55a88cb1e4cea6243929a0ca62c3ac51, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 669568270}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -509,6 +513,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 436266802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1467469237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1467469239}
+  - component: {fileID: 1467469238}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1467469238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467469237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4353dcab0cd65d4c99eceb743d8e4d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrindingTest
+  game: {fileID: 1883298078}
+--- !u!4 &1467469239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467469237}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.12, y: 3.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1883298078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8322819652087899155, guid: 55a88cb1e4cea6243929a0ca62c3ac51, type: 3}
+  m_PrefabInstance: {fileID: 48480409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d57e2899234d9da4a813393b24e59b6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrindingMinigame
 --- !u!1 &1924377127
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,10 +598,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e858977a19ff444cbd41b4e997b3b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  GameOverStats: {fileID: 0}
   shiftLength: 240
   maxFailedOrders: 3
   startOnPlay: 1
   timer: 0
+  PauseMenu: {fileID: 0}
 --- !u!4 &1924377129
 Transform:
   m_ObjectHideFlags: 0
@@ -702,3 +764,4 @@ SceneRoots:
   - {fileID: 297140744}
   - {fileID: 436266802}
   - {fileID: 48480409}
+  - {fileID: 1467469239}
