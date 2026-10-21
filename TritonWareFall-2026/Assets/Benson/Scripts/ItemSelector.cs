@@ -46,6 +46,7 @@ public class ItemSelector : MonoBehaviour
    {
                 SpriteRenderer sr = bySlot[index].GetComponent<SpriteRenderer>();
                 playerHand.HoldIngredient(bySlot[index].type, sr.sprite);
+                AudioManager.Instance.Play("PickUp");
    }
             Close();
         }

@@ -8,24 +8,46 @@ public class AudioManager : MonoBehaviour
     const string VolumeKey = "MasterVolume";
     public float Volume { get; private set; } = 1f;
 
+    public int bruh;
+
     AudioSource musicSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    [System.Serializable]
+    public class Sound
     {
-        // If there is already an instance of AudioManager, destroy this one
-        if (Instance != null && Instance != this)
+        public string name;
+        public AudioClip clip;
+        public float volume = 1f;
+        public bool loop = false;
+        [HideInInspector] public AudioSource source;
+    }
+
+    public Sound[] sounds;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: persists across scenes
+        }
+        else
         {
             Destroy(gameObject);
             return;
         }
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        foreach (var s in sounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.loop = s.loop;
+        }
 
-        musicSource = gameObject.AddComponent<AudioSource>();
-        musicSource.loop = true;
-
-        SetVolume(PlayerPrefs.GetFloat(VolumeKey, 1f));
+        Play("MainMusic");
+        
     }
 
     public void SetVolume(float value)
@@ -35,12 +57,20 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.SetFloat(VolumeKey, Volume);
     }
 
-    public void PlayMusic(AudioClip clip)
+    public void Play(string name)
     {
-        if (musicSource.clip == clip && musicSource.isPlaying)
+        Sound s = System.Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound not found: " + name);
             return;
-        
-        musicSource.clip = clip;
-        musicSource.Play();
+        }
+        s.source.Play();
+    }
+
+    public void Stop(string name)
+    {
+        Sound s = System.Array.Find(sounds, sound => sound.name == name);
+        if (s != null) s.source.Stop();
     }
 }

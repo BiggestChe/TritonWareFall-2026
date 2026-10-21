@@ -433,7 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RecipeGenerator
   potions: 000000000100000002000000i
   physicalIngredients: 0300000004000000i
-  allowSamePotionTwice: 1
+  allowSamePotionTwice: 0
   maxActiveOrders: 4
   orderTimeLimit: 60
   pointsPerOrder: 100

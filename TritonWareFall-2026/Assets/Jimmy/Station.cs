@@ -51,6 +51,7 @@ public class Station : MonoBehaviour
             {
                 brewing = false;
                 potion_ready = true;
+                AudioManager.Instance.Play("Cooked");
                 Debug.Log("Potion ready!");
             }
         }
@@ -62,7 +63,10 @@ public class Station : MonoBehaviour
         //check for which station the player is interacting with and call the appropriate function
         switch (type)
         {
-            case StationType.Cauldron: UseCauldron(); break;
+            case StationType.Cauldron: UseCauldron();
+             AudioManager.Instance.Play("Put");
+
+             break;
             case StationType.Serving:  UseServing();  break;
             case StationType.Trash:    UseTrash();    break;
         }
@@ -75,6 +79,7 @@ public class Station : MonoBehaviour
         // Take out a finished potion
         if (potion_ready)
         {
+
             if (!playerHand.IsEmpty) { Debug.Log("Empty your hands to take the potion"); return; }
             playerHand.HoldPotion(contents, finishedPotionSprite);
             contents.Clear();
@@ -96,6 +101,7 @@ public class Station : MonoBehaviour
         {
             brewing = true;
             brewTimer = brewTime;
+            AudioManager.Instance.Play("Cooking");
         }
     }
 
