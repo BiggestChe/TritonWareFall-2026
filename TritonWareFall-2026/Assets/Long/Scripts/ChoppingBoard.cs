@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Walk up holding an unchopped physical ingredient to start chopping.
+// Walk up holding an unchopped Mandrake / Lizard Tail and press E to start chopping.
 // Setup: give the board a Collider with "Is Trigger" ticked (the interaction zone).
 public class ChoppingBoard : MonoBehaviour
 {
@@ -32,9 +32,9 @@ public class ChoppingBoard : MonoBehaviour
         if (playerMovement != null && !playerMovement.enabled) return;   // another menu is open
         if (!Input.GetKeyDown(interactKey)) return;
 
-        if (!playerHand.HoldingUnchoppedIngredient)
+        if (!playerHand.NeedsChopping)
         {
-            Debug.Log("Bring an unchopped Mandrake or Lizard Tail to chop");
+            Debug.Log("Bring an SalamanderTail or Lizard Tail to chop");
             return;
         }
 

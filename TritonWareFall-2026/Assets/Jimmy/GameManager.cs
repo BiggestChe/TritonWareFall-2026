@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum IngredientType { RedPotion, YellowPotion, BluePotion, Bone, Frog_Leg, Salamander_Tail, EyeBall } // Added by Jimmy, 2026-10-19
+public enum IngredientType { 
+    RedPotion, YellowPotion, BluePotion, 
+    Bone, Frog_Leg, Salamander_Tail, EyeBall } // Added by Jimmy, 2026-10-19
 public enum GameState { Menu, Playing, Paused, GameOver }
 [DefaultExecutionOrder(-1)] //Lets GameManager run before other scripts
 public class GameManager : MonoBehaviour
@@ -90,6 +92,8 @@ public class GameManager : MonoBehaviour
     if (Streak > LongestStreak) LongestStreak = Streak;
     OrdersServed++;
 
+    AudioManager.Instance.Play("Order_Success");
+
     float drunk = DrunkManager.Drunk_Manager != null ? DrunkManager.Drunk_Manager.Drunk_Amount : 0f;
     int points = Mathf.RoundToInt(basePoints * (1f + timeLeftFraction * 0.5f));
 
@@ -108,6 +112,8 @@ public class GameManager : MonoBehaviour
  
         OrdersFailed++;
         Streak = 0;
+
+        AudioManager.Instance.Play("Fail_Order");
  
         if (OrdersFailed >= maxFailedOrders) EndGame(false);
     }

@@ -67,6 +67,7 @@ public class ItemSelector : MonoBehaviour
         int next = y * columns + x;
         if (next < slots.Length) index = next;   // ignore empty cells in uneven grids
         MoveSelector();
+        AudioManager.Instance.Play("UI_Interact");
     }
 
     void MoveSelector() => selector.position = slots[index].position;

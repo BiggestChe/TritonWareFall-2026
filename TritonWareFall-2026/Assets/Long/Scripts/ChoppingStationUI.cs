@@ -98,7 +98,7 @@ public class ChoppingStationUI : MonoBehaviour
 
         if (finished)
         {
-            hand.chopped = true;
+            hand.prepared = true;
         }
 
         if (choppingGamePanel != null) choppingGamePanel.SetActive(false);
@@ -108,6 +108,5 @@ public class ChoppingStationUI : MonoBehaviour
         yield return null;
         player.enabled = true;
     }
-
 
 }
