@@ -24,6 +24,7 @@ public class GrindingMinigame : MonoBehaviour
     [SerializeField] float minZoneJump = 45f;  // new zone must move at least this far
     [SerializeField] int hitsToWin = 5;
     [SerializeField] int missesToLose = 3;
+    [SerializeField] MovementManager player;
 
     public event Action<bool> Finished;
 
@@ -46,8 +47,42 @@ public class GrindingMinigame : MonoBehaviour
 
     public void Begin()
     {
+        player.input = Vector3.zero;
+        player.rb.linearVelocity = Vector3.zero;
+        player.enabled = false;
         hits = misses = 0;
         angle = 0f; dir = 1f;
+        if (DrunkManager.Drunk_Manager.State == DrunkState.Wasted)
+        {
+            startSpeed *= 3.5f;
+            speedUpPerHit *= 1.5f;
+            startZoneWidth *= 0.75f;
+            zoneShrinkPerHit *= 1.25f;
+            minZoneWidth *= 1.5f;
+        }
+        else if (DrunkManager.Drunk_Manager.State == DrunkState.Drunk)
+        {
+            startSpeed *= 2f;
+            speedUpPerHit *= 1.25f;
+            startZoneWidth *= 0.8f;
+            zoneShrinkPerHit *= 1f;
+            minZoneWidth *= 1.5f;
+        } 
+        else if (DrunkManager.Drunk_Manager.State == DrunkState.Tipsy)
+        {
+            startSpeed *= 1.5f;
+            speedUpPerHit *= 1.1f;
+            startZoneWidth *= 1f;
+            zoneShrinkPerHit *= 1f;
+            minZoneWidth *= 1.5f;
+        }
+        else {
+            startSpeed *= 1.25f;
+            speedUpPerHit *= 1f;
+            startZoneWidth *= 1f;
+            zoneShrinkPerHit *= 1f;
+            minZoneWidth *= 2f;
+        }
         speed = startSpeed;
         zoneWidth = startZoneWidth;
         zoneStart = -999f;
@@ -56,6 +91,7 @@ public class GrindingMinigame : MonoBehaviour
         armedAt = Time.time + inputGrace;
         running = true;
         gameObject.SetActive(true);
+        
     }
 
     void Update()
@@ -111,5 +147,6 @@ public class GrindingMinigame : MonoBehaviour
         running = false;
         Finished?.Invoke(won);
         gameObject.SetActive(false);
+        player.enabled = true;
     }
 }

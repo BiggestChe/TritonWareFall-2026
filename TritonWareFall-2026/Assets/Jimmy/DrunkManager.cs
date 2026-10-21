@@ -70,6 +70,11 @@ public class DrunkManager : MonoBehaviour
     // Added by Joseph Tse, 2026-10-17, for testing purposes
     // bool resetPending = false;
 
+    void Start()
+    {
+        //AddIntoxication(0.5f);
+    }
+
     // Update is called once per frame
     void Update()
     {
