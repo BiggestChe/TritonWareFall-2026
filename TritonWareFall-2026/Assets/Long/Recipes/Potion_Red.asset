@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6e39e5b9f604894b17b0274e4a441e, type: 3}
+  m_Name: Potion_Red
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeData
+  recipeName: Red Potion
+  recipeIcon: {fileID: -5716412995672767591, guid: e72db8222266346b2899e21003fc5b99, type: 3}
+  basePatienceTime: 30
+  basePoints: 100

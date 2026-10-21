@@ -91,6 +91,7 @@ public class Station : MonoBehaviour
         if (!playerHand.HoldingIngredient) return;
 
         IngredientType ingredient = playerHand.contents[0];
+         if (!IsPotion(ingredient) && !playerHand.chopped) { Debug.Log("Chop it first!"); return; }
         if (!CanAdd(ingredient)) { Debug.Log("The cauldron doesn't need that"); return; }
 
         contents.Add(ingredient);
