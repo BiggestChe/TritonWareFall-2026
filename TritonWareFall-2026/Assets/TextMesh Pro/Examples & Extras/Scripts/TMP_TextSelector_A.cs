@@ -12,7 +12,7 @@ namespace TMPro.Examples
 
         private Camera m_Camera;
 
-        private bool m_isHoveringObject;
+        private bool m_isHoveringTextObject;
         private int m_selectedLink = -1;
         private int m_lastCharIndex = -1;
         private int m_lastWordIndex = -1;
@@ -29,14 +29,14 @@ namespace TMPro.Examples
 
         void LateUpdate()
         {
-            m_isHoveringObject = false;
+            m_isHoveringTextObject = false;
 
             if (TMP_TextUtilities.IsIntersectingRectTransform(m_TextMeshPro.rectTransform, Input.mousePosition, Camera.main))
             {
-                m_isHoveringObject = true;
+                m_isHoveringTextObject = true;
             }
 
-            if (m_isHoveringObject)
+            if (m_isHoveringTextObject)
             {
                 #region Example of Character Selection
                 int charIndex = TMP_TextUtilities.FindIntersectingCharacter(m_TextMeshPro, Input.mousePosition, Camera.main, true);
@@ -143,14 +143,14 @@ namespace TMPro.Examples
         public void OnPointerEnter(PointerEventData eventData)
         {
             Debug.Log("OnPointerEnter()");
-            m_isHoveringObject = true;
+            m_isHoveringTextObject = true;
         }
 
 
         public void OnPointerExit(PointerEventData eventData)
         {
             Debug.Log("OnPointerExit()");
-            m_isHoveringObject = false;
+            m_isHoveringTextObject = false;
         }
 
     }
