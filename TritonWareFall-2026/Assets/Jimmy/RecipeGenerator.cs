@@ -6,8 +6,8 @@ public class RecipeGenerator : MonoBehaviour
     public static RecipeGenerator Instance { get; private set; }
  
     [Header("Ingredients")]
-    public IngredientType[] potions = { IngredientType.RedPotion, IngredientType.GreenPotion, IngredientType.BluePotion };
-    public IngredientType[] physicalIngredients = { IngredientType.Mandrake, IngredientType.LizardTail };
+    public IngredientType[] potions = { IngredientType.RedPotion, IngredientType.YellowPotion, IngredientType.BluePotion };
+    public IngredientType[] physicalIngredients = { IngredientType.Bone, IngredientType.Frog_Leg, IngredientType.Salamander_Tail, IngredientType.EyeBall};
     public bool allowSamePotionTwice = true;
  
     [Header("Orders")]
@@ -35,6 +35,8 @@ public class RecipeGenerator : MonoBehaviour
     void Start()
     {
         ResetOrders();
+        activeOrders.Add(GenerateRecipe());
+        Debug.Log("First order: " + activeOrders[0].name);
     }
  
     public void ResetOrders()
@@ -128,10 +130,12 @@ public class RecipeGenerator : MonoBehaviour
         switch (type)
         {
             case IngredientType.RedPotion:   return "Red";
-            case IngredientType.GreenPotion: return "Green";
+            case IngredientType.YellowPotion: return "Yellow";
             case IngredientType.BluePotion:  return "Blue";
-            case IngredientType.Mandrake:    return "Mandrake";
-            case IngredientType.LizardTail:  return "Lizard Tail";
+            case IngredientType.Bone:        return "Bone";
+            case IngredientType.Frog_Leg:    return "Frog Leg";
+            case IngredientType.Salamander_Tail: return "Salamander Tail";
+            case IngredientType.EyeBall:     return "Eye Ball";
             default:                         return type.ToString();
         }
     }
