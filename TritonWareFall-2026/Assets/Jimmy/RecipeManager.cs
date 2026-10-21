@@ -3,7 +3,7 @@ using UnityEngine;
  
 // One customer order: 2 potions + 1 physical ingredient.
 [System.Serializable]
-public class Recipe: MonoBehaviour
+public class Recipe
 {
     public string name;
     public List<IngredientType> ingredients = new List<IngredientType>();
