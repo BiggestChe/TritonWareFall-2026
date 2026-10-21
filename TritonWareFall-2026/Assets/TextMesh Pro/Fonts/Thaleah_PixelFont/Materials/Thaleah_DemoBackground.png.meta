@@ -5,7 +5,7 @@ AssetOrigin:
   productId: 140059
   packageName: Free Pixel Font - Thaleah
   packageVersion: 1.1
-  assetPath: Assets/Thaleah_PixelFont/Materials/Thaleah_DemoBackground.png
+  assetPath: Assets/TextMesh Pro/Fonts/Thaleah_PixelFont/Materials/Thaleah_DemoBackground.png
   uploadId: 303939
 TextureImporter:
   internalIDToNameTable: []
