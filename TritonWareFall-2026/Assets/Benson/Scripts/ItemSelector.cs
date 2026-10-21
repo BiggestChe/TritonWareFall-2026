@@ -13,6 +13,8 @@ public class ItemSelector : MonoBehaviour
     Item[] bySlot;                           // bySlot[i] = item currently in slot i
     int index;
 
+    //added by Jimmy, 10/20/26
+    [SerializeField] PlayerHand playerHand;
     public bool IsOpen { get; private set; }
     public System.Action<Item> OnItemChosen;
 
@@ -39,8 +41,12 @@ public class ItemSelector : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Picked: " + bySlot[index].itemName);
-            OnItemChosen?.Invoke(bySlot[index]);
+            //changed by Jimmy, 10/20/26, 
+               if (playerHand.IsEmpty)
+   {
+                SpriteRenderer sr = bySlot[index].GetComponent<SpriteRenderer>();
+                playerHand.HoldIngredient(bySlot[index].type, sr.sprite);
+   }
             Close();
         }
         else if (Input.GetKeyDown(KeyCode.Escape)) Close();

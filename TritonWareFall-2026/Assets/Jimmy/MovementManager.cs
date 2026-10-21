@@ -47,7 +47,7 @@ public class MovementManager : MonoBehaviour
     void FixedUpdate()
     {
         float drunk = DrunkManager.Drunk_Manager.Drunk_Amount;
-        Debug.Log("Drunk amount: " + drunk);
+        //Debug.Log("Drunk amount: " + drunk);
 
         // Drunk wobble: rotate the input direction back and forth
         float wobble = Mathf.Sin(Time.time * 3f) * maxWobbleAngle * drunk;

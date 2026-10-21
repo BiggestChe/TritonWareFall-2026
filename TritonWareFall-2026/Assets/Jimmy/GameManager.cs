@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum IngredientType { RedPotion, GreenPotion, BluePotion, Mandrake, LizardTail }
+public enum IngredientType { RedPotion, YellowPotion, BluePotion, Bone, Frog_Leg, Salamander_Tail, EyeBall } // Added by Jimmy, 2026-10-19
 public enum GameState { Menu, Playing, Paused, GameOver }
 [DefaultExecutionOrder(-1)] //Lets GameManager run before other scripts
 public class GameManager : MonoBehaviour
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public int FailuresRemaining => maxFailedOrders - OrdersFailed;
 
     //Game Stats with their own setters/getters, automatically done by Unity ig
+    [field: SerializeField] 
     public int Score { get; private set; }
     public int Tips { get; private set; }
     public int OrdersServed { get; private set; }
