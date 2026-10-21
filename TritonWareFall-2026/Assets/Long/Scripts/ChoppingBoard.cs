@@ -1,21 +1,43 @@
 using UnityEngine;
 
+// Walk up holding an unchopped physical ingredient to start chopping.
+// Setup: give the board a Collider with "Is Trigger" ticked (the interaction zone).
 public class ChoppingBoard : MonoBehaviour
 {
-    [Header("UI Reference")]
-    public ChoppingStationUI stationUI; // Drag your ChoppingStationUI GameObject here
+    public ChoppingStationUI stationUI;
+    [SerializeField] KeyCode interactKey = KeyCode.E;
 
-    private void OnMouseDown()
+    PlayerHand playerHand;           // set while the player is in range
+    MovementManager playerMovement;
+
+    void OnTriggerEnter(Collider other)
     {
-        // Opens the ingredient menu directly on click for easy testing (no player needed yet!)
-        if (stationUI != null)
+        PlayerHand hand = other.GetComponentInParent<PlayerHand>();
+        if (hand != null)
         {
-            stationUI.OpenIngredientMenu();
-            Debug.Log("Chopping board clicked! Opening ingredient menu.");
+            playerHand = hand;
+            playerMovement = hand.GetComponent<MovementManager>();
         }
-        else
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponentInParent<PlayerHand>() != null)
+            playerHand = null;
+    }
+
+    void Update()
+    {
+        if (playerHand == null || stationUI.IsChopping) return;
+        if (playerMovement != null && !playerMovement.enabled) return;   // another menu is open
+        if (!Input.GetKeyDown(interactKey)) return;
+
+        if (!playerHand.HoldingUnchoppedIngredient)
         {
-            Debug.LogWarning("Station UI reference is missing on the ChoppingBoard!");
+            Debug.Log("Bring an unchopped Mandrake or Lizard Tail to chop");
+            return;
         }
+
+        stationUI.StartChopping(playerHand, playerMovement);
     }
 }

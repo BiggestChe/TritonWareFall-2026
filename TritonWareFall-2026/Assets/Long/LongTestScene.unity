@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892957863694c47469b1f1f0a80f9cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectIngredientButton
-  stationUI: {fileID: 1064975459}
+  stationUI: {fileID: 0}
   choppableItem: {fileID: 665551708}
 --- !u!114 &345455774
 MonoBehaviour:
@@ -764,7 +764,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1064975457}
   - component: {fileID: 1064975458}
-  - component: {fileID: 1064975459}
   m_Layer: 0
   m_Name: OrderUIController
   m_TagString: Untagged
@@ -796,35 +795,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1064975456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 667a46296444b464f8e1c8268ee10dd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OrderUIController
-  ticketPrefab: {fileID: 7328731699242575418, guid: 9efa7936697d44c96a348d0719c72064, type: 3}
-  ticketContainer: {fileID: 1612714003}
---- !u!114 &1064975459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064975456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 346c2dcaea5184ccbac3521e5e89634c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChoppingStationUI
-  ingredientMenuPanel: {fileID: 1337124565}
-  choppingGamePanel: {fileID: 1155673756}
+  ingredientMenuPanel: {fileID: 0}
+  choppingGamePanel: {fileID: 0}
   itemNameText: {fileID: 0}
-  progressBar: {fileID: 1556942644}
-  progressText: {fileID: 1615303975}
-  spacebarPromptGraphic: {fileID: 0}
-  spacebarPromptImage: {fileID: 2010229157}
-  unpressedSprite: {fileID: -7603423934520930414, guid: bba5d36ec20a54167922541a8250b710, type: 3}
-  pressedSprite: {fileID: 5458023462895045852, guid: b88f94ea61dc34704a9d67697cd6af6d, type: 3}
-  knifeEffect1: {fileID: 1957778059}
-  knifeEffect2: {fileID: 329252499}
+  progressText: {fileID: 0}
+  progressBar: {fileID: 0}
+  frogLegSprite: {fileID: 0}
+  salamanderTailSprite: {fileID: 0}
+  ingredientDisplayImage: {fileID: 0}
+  spacebarPromptImage: {fileID: 0}
+  unpressedSprite: {fileID: 0}
+  pressedSprite: {fileID: 0}
+  knifeEffect1: {fileID: 0}
+  knifeEffect2: {fileID: 0}
   knifeDisplayDuration: 0.15
+  isChoppingActive: 0
 --- !u!1 &1155673756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,7 +1636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0528209d3424a1b80c5ae428489d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChoppingBoard
-  stationUI: {fileID: 1064975459}
+  stationUI: {fileID: 0}
 --- !u!1 &1764025334
 GameObject:
   m_ObjectHideFlags: 0

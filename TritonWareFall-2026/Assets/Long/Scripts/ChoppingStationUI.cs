@@ -2,204 +2,154 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.EventSystems;
 
+// The chopping minigame. ChoppingBoard calls StartChopping() with the player's hand.
+// Mash Space to chop; when done, the held ingredient becomes chopped.
+// Escape cancels (ingredient stays unchopped).
 public class ChoppingStationUI : MonoBehaviour
 {
-    [Header("UI Panels")]
-    public GameObject ingredientMenuPanel;     // Drag your IngredientSelectionPanel here
-    public GameObject choppingGamePanel;       // Drag your ChoppingGamePanel here
-
     [Header("UI Elements")]
-    public TMP_Text itemNameText;              // Drag your Item Name Text component here
-    public TMP_Text progressText;              // Drag your ProgressText component here
-    public Slider progressBar;                 // Drag your ChoppingProgressBar slider here
+    //
+    public GameObject choppingGamePanel;       // the chopping panel
+    public TMP_Text itemNameText;
+    public TMP_Text progressText;
+    public Slider progressBar;
+    public Image ingredientDisplayImage;       // shows the held ingredient's sprite
 
-    [Header("Ingredient Visuals")]
-    public Sprite frogLegSprite;               // Drag your Frog Leg sprite here
-    public Sprite salamanderTailSprite;        // Drag your Salamander Tail sprite here
-    public UnityEngine.UI.Image ingredientDisplayImage; // Image in chopping panel to show selected food
+    [Header("Chopping")]
+    public int requiredChops = 10;
 
     [Header("Spacebar Visuals")]
-    public UnityEngine.UI.Image spacebarPromptImage; // Drag your SpacebarPrompt UI object here
-    public Sprite unpressedSprite;                   // Drag your unpressed PNG here
-    public Sprite pressedSprite;                     // Drag your pressed PNG here
+    public Image spacebarPromptImage;
+    public Sprite unpressedSprite;
+    public Sprite pressedSprite;
 
     [Header("Knife Effect Visuals")]
-    public GameObject knifeEffect1;            // Drag your 1st knife effect object here
-    public GameObject knifeEffect2;            // Drag your 2nd knife effect object here
-    public float knifeDisplayDuration = 0.15f; 
-    private int knifeToggleCounter = 0;        
-    private Coroutine knifeRoutine;
+    public GameObject knifeEffect1;
+    public GameObject knifeEffect2;
+    public float knifeDisplayDuration = 0.15f;
 
-    [HideInInspector] public bool isChoppingActive = false;
-    private string currentIngredientName;
-    private int currentRequiredChops;
-    private int currentChopCount;
+    public bool IsChopping { get; private set; }
 
-    private void Start()
+    PlayerHand hand;
+    MovementManager player;
+    int chopCount;
+    int knifeToggleCounter;
+    Coroutine knifeRoutine;
+
+    void Start()
     {
-        CloseAllPanels();
+        if (choppingGamePanel != null) choppingGamePanel.SetActive(false);
     }
 
-    private void Update()
+    public void StartChopping(PlayerHand playerHand, MovementManager movement)
     {
-        if (!isChoppingActive) return;
+        hand = playerHand;
+        player = movement;
+        chopCount = 0;
 
-        // Animate the spacebar prompt graphic scaling
+        // Freeze the chef (same as ItemSelector)
+        player.input = Vector3.zero;
+        player.rb.linearVelocity = Vector3.zero;
+        player.enabled = false;
+
+        // Show what's being chopped
+        if (ingredientDisplayImage != null && hand.heldSprite != null)
+            ingredientDisplayImage.sprite = hand.heldSprite.sprite;
+        if (spacebarPromptImage != null && unpressedSprite != null)
+            spacebarPromptImage.sprite = unpressedSprite;
+
+        if (progressBar != null)
+        {
+            progressBar.maxValue = requiredChops;
+            progressBar.value = 0;
+        }
+        UpdateProgressUI();
+
+        if (choppingGamePanel != null) choppingGamePanel.SetActive(true);
+        IsChopping = true;
+    }
+
+    void Update()
+    {
+        if (!IsChopping) return;
+
+        // Pulse the spacebar prompt
         if (spacebarPromptImage != null)
         {
             float scale = 1f + Mathf.PingPong(Time.time * 3f, 0.2f);
             spacebarPromptImage.rectTransform.localScale = new Vector3(scale, scale, 1f);
         }
 
-        // Detect Spacebar press (down)
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            RegisterChop();
-
             if (spacebarPromptImage != null && pressedSprite != null)
-            {
                 spacebarPromptImage.sprite = pressedSprite;
-            }
-
-            ShowAlternatingKnifeSlash();
+            Chop();
         }
 
-        // Detect Spacebar release (up)
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            if (spacebarPromptImage != null && unpressedSprite != null)
-            {
-                spacebarPromptImage.sprite = unpressedSprite;
-            }
-        }
+        if (Input.GetKeyUp(KeyCode.Space) && spacebarPromptImage != null && unpressedSprite != null)
+            spacebarPromptImage.sprite = unpressedSprite;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            StartCoroutine(StopChopping(false));
     }
 
-    // Called by the ChoppingBoard when clicked
-    public void OpenIngredientMenu()
+    void Chop()
     {
-        CloseAllPanels();
-        if (ingredientMenuPanel != null)
-        {
-            ingredientMenuPanel.SetActive(true);
-        }
-    }
-
-    // Called when player clicks an ingredient button
-    public void SelectIngredient(string ingredientName, int requiredChops)
-    {
-        currentIngredientName = ingredientName;
-        currentRequiredChops = requiredChops;
-        currentChopCount = 0;
-
-        // Update title text
-        if (itemNameText != null)
-        {
-            itemNameText.text = currentIngredientName;
-        }
-
-        // Update ingredient picture graphic
-        if (ingredientDisplayImage != null)
-        {
-            if (ingredientName == "Frog Leg" && frogLegSprite != null)
-            {
-                ingredientDisplayImage.sprite = frogLegSprite;
-                ingredientDisplayImage.gameObject.SetActive(true);
-            }
-            else if (ingredientName == "Salamander Tail" && salamanderTailSprite != null)
-            {
-                ingredientDisplayImage.sprite = salamanderTailSprite;
-                ingredientDisplayImage.gameObject.SetActive(true);
-            }
-        }
-
-        // Setup slider
-        if (progressBar != null)
-        {
-            progressBar.maxValue = currentRequiredChops;
-            progressBar.value = 0;
-        }
+        chopCount++;
         UpdateProgressUI();
+        ShowAlternatingKnifeSlash();
 
-        // Switch panels
-        if (ingredientMenuPanel != null) ingredientMenuPanel.SetActive(false);
-        if (choppingGamePanel != null) choppingGamePanel.SetActive(true);
+        if (AudioManager.Instance != null) AudioManager.Instance.Play("Chop");
 
-        isChoppingActive = true;
+        if (chopCount >= requiredChops)
+            StartCoroutine(StopChopping(true));
     }
 
-    private void RegisterChop()
+    IEnumerator StopChopping(bool finished)
     {
-        currentChopCount++;
-        UpdateProgressUI();
+        IsChopping = false;
 
-        if (currentChopCount >= currentRequiredChops)
+        if (finished)
         {
-            FinishChopping();
-        }
-    }
-
-    private void UpdateProgressUI()
-    {
-        if (progressBar != null)
-        {
-            progressBar.value = currentChopCount;
+            hand.chopped = true;
         }
 
-        if (progressText != null)
-        {
-            progressText.text = currentChopCount + " / " + currentRequiredChops;
-        }
-    }
-
-    private void FinishChopping()
-    {
-        isChoppingActive = false;
-
-        // Complete the inventory reduction and add chopped item count
-        if (KitchenInventory.Instance != null)
-        {
-            KitchenInventory.Instance.CompleteChop(currentIngredientName);
-        }
-
-        CloseAllPanels();
-    }
-
-    public void CloseAllPanels()
-    {
-        isChoppingActive = false;
-        if (ingredientMenuPanel != null) ingredientMenuPanel.SetActive(false);
         if (choppingGamePanel != null) choppingGamePanel.SetActive(false);
+        if (knifeEffect1 != null) knifeEffect1.SetActive(false);
+        if (knifeEffect2 != null) knifeEffect2.SetActive(false);
+
+        // Wait one frame so the last Space press doesn't also trigger a dash
+        yield return null;
+        player.enabled = true;
     }
 
-    private void ShowAlternatingKnifeSlash()
+    void UpdateProgressUI()
     {
-        if (knifeRoutine != null)
-        {
-            StopCoroutine(knifeRoutine);
-        }
+        if (progressBar != null) progressBar.value = chopCount;
+        if (progressText != null) progressText.text = chopCount + " / " + requiredChops;
+    }
+
+    // ---------- Knife effects ----------
+
+    void ShowAlternatingKnifeSlash()
+    {
+        if (knifeRoutine != null) StopCoroutine(knifeRoutine);
         knifeRoutine = StartCoroutine(FlashKnifeRoutine());
     }
 
-    private IEnumerator FlashKnifeRoutine()
+    IEnumerator FlashKnifeRoutine()
     {
         GameObject activeKnife = (knifeToggleCounter % 2 == 0) ? knifeEffect1 : knifeEffect2;
         knifeToggleCounter++;
 
         if (knifeEffect1 != null) knifeEffect1.SetActive(false);
         if (knifeEffect2 != null) knifeEffect2.SetActive(false);
-
-        if (activeKnife != null)
-        {
-            activeKnife.SetActive(true);
-        }
+        if (activeKnife != null) activeKnife.SetActive(true);
 
         yield return new WaitForSeconds(knifeDisplayDuration);
 
-        if (activeKnife != null)
-        {
-            activeKnife.SetActive(false);
-        }
+        if (activeKnife != null) activeKnife.SetActive(false);
     }
 }
