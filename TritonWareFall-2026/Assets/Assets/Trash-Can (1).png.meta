@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 347af56183a9f7d47b2c207b30a66921
+guid: af19207a40f0372418d8d7ca19c1781b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6731933962644868715
-    second: potion shelf_0
+      213: 210720873219255565
+    second: Trash-Can (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -141,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: potion shelf_0
+      name: Trash-Can (1)_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 1
         y: 0
-        width: 26
-        height: 27
+        width: 30
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5913a217abd5392a0800000000000000
-      internalID: -6731933962644868715
+      spriteID: d0d6efa8481ace200800000000000000
+      internalID: 210720873219255565
       vertices: []
       indices: 
       edges: []
@@ -176,7 +176,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      potion shelf_0: -6731933962644868715
+      Trash-Can (1)_0: 210720873219255565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

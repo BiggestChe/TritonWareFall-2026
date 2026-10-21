@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &329252500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -9193106206843419836, guid: b88f94ea61dc34704a9d67697cd6af6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e410e020fe654cd9a179b8ffa137b28, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectIngredientButton
   stationUI: {fileID: 0}
-  choppableItem: {fileID: 665551708}
+  choppableItem: {fileID: 0}
 --- !u!114 &345455774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,115 +472,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &665551707
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 665551710}
-  - component: {fileID: 665551709}
-  - component: {fileID: 665551708}
-  m_Layer: 0
-  m_Name: Stuff
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &665551708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665551707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e9aaca99875f4062890339a57a38902, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChoppableItem
-  unchoppedName: Stuff
-  choppedName: Chopped Stuff
-  requiredChops: 10
-  choppedSprite: {fileID: 0}
---- !u!212 &665551709
-SpriteRenderer:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665551707}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
-  m_BlendShapeWeights: []
---- !u!4 &665551710
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665551707}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: -0, z: -2866.5}
-  m_LocalScale: {x: 40.95, y: 40.95, z: 40.95}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1155673757}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &695841683
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,21 +689,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346c2dcaea5184ccbac3521e5e89634c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChoppingStationUI
-  ingredientMenuPanel: {fileID: 0}
-  choppingGamePanel: {fileID: 0}
+  choppingGamePanel: {fileID: 1155673756}
   itemNameText: {fileID: 0}
-  progressText: {fileID: 0}
-  progressBar: {fileID: 0}
-  frogLegSprite: {fileID: 0}
-  salamanderTailSprite: {fileID: 0}
+  progressText: {fileID: 1615303975}
+  progressBar: {fileID: 1556942644}
   ingredientDisplayImage: {fileID: 0}
+  requiredChops: 10
   spacebarPromptImage: {fileID: 0}
-  unpressedSprite: {fileID: 0}
-  pressedSprite: {fileID: 0}
-  knifeEffect1: {fileID: 0}
-  knifeEffect2: {fileID: 0}
+  unpressedSprite: {fileID: 21300000, guid: 69311666f637349a39fd7d147729b3c4, type: 3}
+  pressedSprite: {fileID: 21300000, guid: 8e410e020fe654cd9a179b8ffa137b28, type: 3}
+  knifeEffect1: {fileID: 1957778059}
+  knifeEffect2: {fileID: 329252499}
   knifeDisplayDuration: 0.15
-  isChoppingActive: 0
 --- !u!1 &1155673756
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,7 +718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1155673757
 RectTransform:
   m_ObjectHideFlags: 0
@@ -843,7 +731,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 665551710}
   - {fileID: 1556942643}
   - {fileID: 1615303977}
   - {fileID: 2010229159}
@@ -1003,7 +890,7 @@ RectTransform:
   m_Father: {fileID: 387254796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1442,7 +1329,7 @@ RectTransform:
   m_Father: {fileID: 943591719}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1637,6 +1524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChoppingBoard
   stationUI: {fileID: 0}
+  interactKey: 101
 --- !u!1 &1764025334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,7 +1758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1957778060
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1910,7 +1798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -973311797733578282, guid: b88f94ea61dc34704a9d67697cd6af6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 69311666f637349a39fd7d147729b3c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

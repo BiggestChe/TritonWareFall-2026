@@ -150,7 +150,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -7800496073597509636, guid: 1cdd0268398d34c44a5ca25a78f26564, type: 3}
+  m_Sprite: {fileID: 7640528799106771609, guid: 6931c9a81be69f847b4177c5a17f280f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   itemName: yellow bottle
+  type: 0
   menu: {fileID: 0}
 --- !u!61 &725982438860346653
 BoxCollider2D:
@@ -422,6 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   itemName: red bottle
+  type: 0
   menu: {fileID: 0}
 --- !u!61 &2513758515175335211
 BoxCollider2D:
@@ -872,6 +874,7 @@ MonoBehaviour:
   columns: 3
   starter: 1
   player: {fileID: 0}
+  playerHand: {fileID: 0}
 --- !u!1 &9148586948609831735
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PotionItem
   itemName: blue bottle
+  type: 0
   menu: {fileID: 0}
 --- !u!61 &1081541905761728689
 BoxCollider2D:
