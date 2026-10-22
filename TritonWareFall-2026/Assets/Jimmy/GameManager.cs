@@ -104,6 +104,9 @@ public class GameManager : MonoBehaviour
     Tips += tip;
     
     DrunkManager.Drunk_Manager?.AddIntoxication(DrunkManager.Drunk_Manager.swigAmount); // Add intoxication when an order is served
+
+    AudioManager.Instance.Play("Drink");
+    Debug.Log(DrunkManager.Drunk_Manager.Drunk_Amount);
     }
 
     public void FailOrder()

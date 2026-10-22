@@ -9,7 +9,7 @@ public class RecipeGenerator : MonoBehaviour
     public IngredientType[] potions = { IngredientType.RedPotion, IngredientType.YellowPotion, IngredientType.BluePotion };
     public IngredientType[] physicalIngredients = { IngredientType.Bone, IngredientType.Frog_Leg, IngredientType.Salamander_Tail, IngredientType.EyeBall};
     public bool allowSamePotionTwice = true;
- 
+ //
     [Header("Orders")]
     public int maxActiveOrders = 4;
     public float orderTimeLimit = 60f;         // seconds a customer will wait

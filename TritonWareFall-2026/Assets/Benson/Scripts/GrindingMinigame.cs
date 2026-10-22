@@ -113,6 +113,7 @@ public class GrindingMinigame : MonoBehaviour
         {
             hits++;
             speed += speedUpPerHit;
+            AudioManager.Instance.Play("Grind");
             zoneWidth = Mathf.Max(minZoneWidth, zoneWidth - zoneShrinkPerHit);
             if (hits >= hitsToWin) { Finish(true); return; }
             PlaceZone();

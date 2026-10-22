@@ -12,8 +12,13 @@ public class Station : MonoBehaviour
 
     [Header("Cauldron")]
     public float brewTime = 3f;
-    [SerializeField] Sprite finishedPotionSprite;
     public List<IngredientType> contents = new List<IngredientType>();
+
+    [Header("Finished Potion Sprites")]
+    [SerializeField] Sprite purplePotionSprite;   // Red + Blue
+    [SerializeField] Sprite orangePotionSprite;   // Red + Yellow
+    [SerializeField] Sprite greenPotionSprite;    // Blue + Yellow
+    [SerializeField] Sprite finishedPotionSprite; // fallback (e.g. Red + Red)
 
     PlayerHand playerHand;       // set while the player is in range
     MovementManager playerMovement;
@@ -63,10 +68,7 @@ public class Station : MonoBehaviour
         //check for which station the player is interacting with and call the appropriate function
         switch (type)
         {
-            case StationType.Cauldron: UseCauldron();
-             AudioManager.Instance.Play("Put");
-
-             break;
+            case StationType.Cauldron: UseCauldron(); break;
             case StationType.Serving:  UseServing();  break;
             case StationType.Trash:    UseTrash();    break;
         }
@@ -79,9 +81,8 @@ public class Station : MonoBehaviour
         // Take out a finished potion
         if (potion_ready)
         {
-
             if (!playerHand.IsEmpty) { Debug.Log("Empty your hands to take the potion"); return; }
-            playerHand.HoldPotion(contents, finishedPotionSprite);
+            playerHand.HoldPotion(contents, GetPotionSprite(contents));
             contents.Clear();
             potion_ready = false;
             return;
@@ -91,9 +92,12 @@ public class Station : MonoBehaviour
         if (!playerHand.HoldingIngredient) return;
 
         IngredientType ingredient = playerHand.contents[0];
-         if (!IsPotion(ingredient) && !playerHand.prepared) { Debug.Log("Chop it first!"); return; }
+        if (!IsPotion(ingredient) && !playerHand.prepared) { Debug.Log("Chop or grind it first!"); return; }
         if (!CanAdd(ingredient)) { Debug.Log("The cauldron doesn't need that"); return; }
 
+        //if potion, play pour sound effect instead, physical - put
+        if (IsPotion(ingredient)) AudioManager.Instance.Play("Pour");
+        else AudioManager.Instance.Play("Put");
         contents.Add(ingredient);
         playerHand.Clear();
         Debug.Log("Added " + ingredient + " (" + contents.Count + "/3)");
@@ -104,6 +108,19 @@ public class Station : MonoBehaviour
             brewTimer = brewTime;
             AudioManager.Instance.Play("Cooking");
         }
+    }
+
+    // Picks the finished potion's look from its two potion colors
+    Sprite GetPotionSprite(List<IngredientType> ingredients)
+    {
+        bool red = ingredients.Contains(IngredientType.RedPotion);
+        bool blue = ingredients.Contains(IngredientType.BluePotion);
+        bool yellow = ingredients.Contains(IngredientType.YellowPotion);
+
+        if (red && blue && purplePotionSprite != null)    return purplePotionSprite;
+        if (red && yellow && orangePotionSprite != null)  return orangePotionSprite;
+        if (blue && yellow && greenPotionSprite != null)  return greenPotionSprite;
+        return finishedPotionSprite;   // same color twice, or a sprite isn't assigned
     }
 
     // Formula: max 2 potions and max 1 physical ingredient
@@ -131,14 +148,17 @@ public class Station : MonoBehaviour
 
         if (RecipeGenerator.Instance.TryServe(playerHand.contents))
         {
-            playerHand.Clear();
-            Debug.Log("S");
+            Debug.Log("Served!");
         }
         else
         {
             GameManager.Instance.FailOrder();
             Debug.Log("No customer ordered that potion");
-        }  
+        }
+
+        // Clear either way: a wrong potion is thrown out, so pressing E again
+        // can't rack up more failures from the same potion
+        playerHand.Clear();
     }
 
     // ---------- Trash ----------

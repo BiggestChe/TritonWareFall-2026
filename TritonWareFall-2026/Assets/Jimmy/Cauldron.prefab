@@ -109,8 +109,11 @@ MonoBehaviour:
   type: 0
   interactKey: 101
   brewTime: 3
-  finishedPotionSprite: {fileID: -3793235017694850993, guid: 4e9973bc88220724fb2a60deb53e55a9, type: 3}
   contents: 
+  purplePotionSprite: {fileID: -3793235017694850993, guid: 4e9973bc88220724fb2a60deb53e55a9, type: 3}
+  orangePotionSprite: {fileID: 238827021085289878, guid: efbfdbb9ea2e38241b8f48dc333ffceb, type: 3}
+  greenPotionSprite: {fileID: -7800496073597509636, guid: 1cdd0268398d34c44a5ca25a78f26564, type: 3}
+  finishedPotionSprite: {fileID: -3793235017694850993, guid: 4e9973bc88220724fb2a60deb53e55a9, type: 3}
 --- !u!65 &8349790041512577920
 BoxCollider:
   m_ObjectHideFlags: 0

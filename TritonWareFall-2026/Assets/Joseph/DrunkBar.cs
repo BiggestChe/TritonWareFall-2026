@@ -33,6 +33,7 @@ public class DrunkBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateBar(DrunkManager.Drunk_Manager.Drunk_Amount, DrunkManager.Drunk_Manager.State);
         
     }
 }
